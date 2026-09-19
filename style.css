@@ -1,0 +1,133 @@
+/* SkipCount — shared styles.
+   Tokens mirror App/Design/Theme.swift so the site and the app read as one
+   product: warm off-white ground, one hot orange accent, green only for
+   "done". */
+
+:root {
+  --accent: #EE5A24;
+  --accent-text: #C2410C;
+  --accent-soft: #FFECE3;
+  --success: #1E9E6A;
+  --success-soft: #E3F6EC;
+  --canvas: #FAF7F2;
+  --surface: #FFFFFF;
+  --sunken: #F3EFE8;
+  --ink: #1B1814;
+  --ink-2: #6B635A;
+  --ink-3: #9C9389;
+  --hairline: #E8E2D9;
+  --radius: 22px;
+  --radius-sm: 14px;
+  --measure: 68ch;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- header ---------- */
+
+header.site {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--hairline);
+  background: rgba(250, 247, 242, .88);
+  backdrop-filter: saturate(180%) blur(14px);
+  position: sticky; top: 0; z-index: 10;
+}
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand .mark {
+  width: 32px; height: 32px; border-radius: 9px; background: var(--accent);
+  display: grid; place-items: center;
+}
+.brand .mark svg { width: 20px; height: 20px; }
+.brand strong { font-size: 17px; letter-spacing: -.01em; }
+nav.site a {
+  color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500;
+  margin-left: 20px;
+}
+nav.site a:hover { color: var(--accent-text); }
+
+/* ---------- type ---------- */
+
+h1 {
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+  line-height: 1.06; letter-spacing: -.03em; margin: 0 0 14px;
+  text-wrap: balance;
+}
+h2 { font-size: 1.3rem; letter-spacing: -.015em; margin: 40px 0 10px; text-wrap: balance; }
+h3 { font-size: 1.02rem; margin: 26px 0 6px; }
+p, li { color: var(--ink-2); max-width: var(--measure); }
+p { margin: 0 0 14px; }
+a { color: var(--accent-text); }
+strong { color: var(--ink); font-weight: 600; }
+.lede { font-size: 1.12rem; color: var(--ink-2); max-width: 56ch; }
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent-text); margin: 0 0 10px;
+}
+.updated { font-size: 14px; color: var(--ink-3); margin-bottom: 26px; }
+
+/* ---------- sections ---------- */
+
+section { padding: 44px 0; }
+section.hero { padding: 72px 0 40px; }
+section + section { border-top: 1px solid var(--hairline); }
+
+.cta {
+  display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+  font-weight: 600; padding: 14px 22px; border-radius: 16px; margin-top: 8px;
+}
+.cta:hover { filter: brightness(.95); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 18px; }
+.card {
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius);
+  padding: 22px;
+}
+.card h3 { margin: 0 0 6px; }
+.card p { margin: 0; font-size: 15px; }
+
+.callout {
+  background: var(--success-soft); border-radius: var(--radius-sm); padding: 18px 20px;
+  margin: 8px 0 22px; border: 1px solid rgba(30, 158, 106, .18);
+}
+.callout p { margin: 0; color: var(--ink); }
+.callout p + p { margin-top: 10px; }
+
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 18px 0 0; }
+.steps li {
+  counter-increment: step; position: relative; padding-left: 52px; margin-bottom: 18px; max-width: none;
+}
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 36px; height: 36px; border-radius: 12px; background: var(--accent-soft); color: var(--accent-text);
+  display: grid; place-items: center; font-weight: 700;
+}
+.steps strong { display: block; margin-bottom: 2px; }
+
+dl.faq dt { font-weight: 600; margin-top: 22px; }
+dl.faq dd { margin: 6px 0 0; color: var(--ink-2); max-width: var(--measure); }
+
+ul { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+/* ---------- footer ---------- */
+
+footer.site { padding: 36px 0 48px; border-top: 1px solid var(--hairline); font-size: 14px; color: var(--ink-3); }
+footer.site a { color: var(--ink-2); text-decoration: none; margin-right: 18px; }
+footer.site a:hover { color: var(--accent-text); }
+
+@media (max-width: 560px) {
+  nav.site a { margin-left: 14px; }
+  section.hero { padding: 48px 0 32px; }
+}
